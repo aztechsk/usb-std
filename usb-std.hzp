@@ -1,0 +1,18 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="usb-std" target="8" version="2">
+  <project Name="usb-std">
+    <configuration
+      Name="Common"
+      c_only_additional_options="-Wall;-Wextra;-Wstrict-prototypes;-Wmissing-prototypes;-Wmissing-declarations;-Wshadow;-Wpointer-arith;-Wbad-function-cast;-Wcast-align;-Wcast-qual;-Wjump-misses-init;-Wno-unused-parameter;-Wundef"
+      c_system_include_directories="$(ProjectDir)/../freertos/src/inc"
+      c_user_include_directories="$(ProjectDir)/../inc;$(ProjectDir)/../ucdrv/src;$(ProjectDir)/../sys/src;$(ProjectDir)/../usb-dp/src"
+      project_directory=""
+      project_type="Library" />
+    <folder Name="src">
+      <file Name="usb_ctl_req.h" file_name="src/usb_ctl_req.h" />
+      <file Name="usb_ctl_req.c" file_name="src/usb_ctl_req.c" />
+      <file Name="usb_std_def.h" file_name="src/usb_std_def.h" />
+      <file Name="usb_std_def.c" file_name="src/usb_std_def.c" />
+    </folder>
+  </project>
+</solution>
