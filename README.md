@@ -1,7 +1,7 @@
 
 # usb-std
 
-The **usb-std** library provides the infrastructure for processing standard requests from the USB host.
+The **usb-std** C library provides the infrastructure for processing standard requests from the USB host.
 
 ### Library features
 
