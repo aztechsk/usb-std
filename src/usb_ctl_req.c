@@ -1,7 +1,7 @@
 /*
  * usb_ctl_req.c
  *
- * Copyright (c) 2020 Jan Rusnak <jan@rusnak.sk>
+ * Copyright (c) 2024 Jan Rusnak <jan@rusnak.sk>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -131,17 +131,17 @@ static void rxstp(void)
 			p_clbks = p_std_clbks;
 		}
 		break;
-	case USB_CLASS_REQUEST    :
+	case USB_CLASS_REQUEST :
 		if (p_cls_clbks) {
 			p_clbks = p_cls_clbks;
 		}
 		break;
-	case USB_VENDOR_REQUEST   :
+	case USB_VENDOR_REQUEST :
 		if (p_vnd_clbks) {
 			p_clbks = p_vnd_clbks;
 		}
 		break;
-	default			  :
+	default :
 #if USB_LOG_CTL_REQ_EVENTS == 1
 		log_usb_ctl_req_event("stp !bad request type!");
 #endif
@@ -196,7 +196,7 @@ static void rxstp(void)
 static void txcomp(void)
 {
 	switch (state) {
-	case STP_TRANS_DATA_IN         :
+	case STP_TRANS_DATA_IN :
 		if (ctl_req.nmb == 0) {
 			if (sent_zero_pkt) {
 				udp_endp0_tx_pkt_rdy();
@@ -217,7 +217,7 @@ static void txcomp(void)
 			udp_endp0_tx_pkt_rdy();
 		}
 		break;
-	case STP_TRANS_NO_DATA_STATUS  :
+	case STP_TRANS_NO_DATA_STATUS :
 		/* FALLTHRU */
 	case STP_TRANS_DATA_OUT_STATUS :
 		udp_endp0_txcomp_accept();
@@ -251,7 +251,7 @@ static void rxdata(int nmb)
                 udp_endp0_rxdata_done();
                 state = STP_TRANS_IDLE;
 		break;
-	case STP_TRANS_DATA_OUT       :
+	case STP_TRANS_DATA_OUT :
 		if (nmb == pkt_sz) {
 			if (nmb < ctl_req.nmb) {
 				read_udp_endp0_fifo(ctl_req.buf, pkt_sz);
@@ -327,7 +327,7 @@ static void stlsnt(void)
 	case STP_TRANS_STALL :
 		udp_endp0_stlsnt_accept();
 		break;
-	default              :
+	default :
 #if USB_LOG_CTL_REQ_EVENTS == 1
 		log_usb_ctl_req_event("unexp stlsnt");
 #endif
